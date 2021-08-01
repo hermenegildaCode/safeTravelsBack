@@ -10,7 +10,7 @@ import app.web.safetravels.entity.Usr;
 
 public interface UserRepository extends JpaRepository<Usr, String> {
 	List<Usr> findByCountry(String country);
-	Optional<Usr> findByUsername(String username);
-	Boolean existsByUsername(String username);
+	Usr findByEmail(String email);
+	Usr findByUsername(String username);
 	Boolean existsByEmail(String email);
 }

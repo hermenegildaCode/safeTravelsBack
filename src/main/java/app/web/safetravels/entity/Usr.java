@@ -25,6 +25,7 @@ import lombok.NoArgsConstructor;
 public class Usr {
 	@Id
 	private String email;
+	private String username;
 	private String passwd;
 	private String phone;
 	private String firstname;
@@ -32,11 +33,11 @@ public class Usr {
 	private String country;
 	private Date birthdate;
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(	name = "usr_roles", 
-				joinColumns = @JoinColumn(name = "usr_email"), 
-				inverseJoinColumns = @JoinColumn(name = "role_id"))
-	private Set<Role> roles = new HashSet<Role>();
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(	name = "usr_roles", 
+//				joinColumns = @JoinColumn(name = "usr_email"), 
+//				inverseJoinColumns = @JoinColumn(name = "role_id"))
+//	private Set<Role> roles = new HashSet<Role>();
 
 	public Usr(String email, String passwd) {
 		this.email= email;
@@ -90,13 +91,13 @@ public class Usr {
 	public void setBirthdate(Date birthdate) {
 		this.birthdate = birthdate;
 	}
-	public Set<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
+//	public Set<Role> getRoles() {
+//		return roles;
+//	}
+//
+//	public void setRoles(Set<Role> roles) {
+//		this.roles = roles;
+//	}
 
 
 }
