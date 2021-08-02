@@ -1,4 +1,4 @@
-package security;
+package app.web.safetravels.security;
 
 import java.io.IOException;
 

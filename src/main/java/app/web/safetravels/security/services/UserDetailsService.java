@@ -1,4 +1,4 @@
-package security.services;
+package app.web.safetravels.security.services;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

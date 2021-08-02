@@ -7,7 +7,7 @@ public class LoginRequest {
 	private String email;
 
 	@NotBlank
-	private String password;
+	private String passwd;
 
 	public String getEmail() {
 		return email;
@@ -17,11 +17,11 @@ public class LoginRequest {
 		this.email = email;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswd() {
+		return passwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswd(String password) {
+		this.passwd = password;
 	}
 }

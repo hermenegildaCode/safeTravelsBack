@@ -1,4 +1,4 @@
-package security.services;
+package app.web.safetravels.security.services;
 
 import java.sql.Date;
 import java.util.Collection;
@@ -50,21 +50,21 @@ public class UserDetailsImpl implements UserDetails {
 		this.authorities = authorities;
 	}
 
-	public static UserDetailsImpl build(Usr user) {
-		List<GrantedAuthority> authorities = user.getRoles().stream()
-				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-				.collect(Collectors.toList());
+//	public static UserDetailsImpl build(Usr user) {
+//		List<GrantedAuthority> authorities = user.getRoles().stream()
+//				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
+//				.collect(Collectors.toList());
 
-		return new UserDetailsImpl(
-				user.getEmail(),
-				user.getPasswd(),
-				user.getFirstname(),
-				user.getLastname(),
-				user.getPhone(),
-				user.getCountry(),
-				user.getBirthdate(),
-				authorities);
-	}
+//		return new UserDetailsImpl(
+//				user.getEmail(),
+//				user.getPasswd(),
+//				user.getFirstname(),
+//				user.getLastname(),
+//				user.getPhone(),
+//				user.getCountry(),
+//				user.getBirthdate(),
+//				authorities);
+//	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -110,5 +110,10 @@ public class UserDetailsImpl implements UserDetails {
 	@Override
 	public String getUsername() {
 		return email;
+	}
+
+	public static UserDetails build(Usr user) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

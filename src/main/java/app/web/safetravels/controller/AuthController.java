@@ -33,14 +33,14 @@ import app.web.safetravels.payload.MessageResponse;
 import app.web.safetravels.payload.SignupRequest;
 import app.web.safetravels.repository.RoleRepository;
 import app.web.safetravels.repository.UserRepository;
-import security.JwtUtils;
-import security.services.UserDetailsImpl;
+import app.web.safetravels.security.JwtUtils;
+import app.web.safetravels.security.services.UserDetailsImpl;
 
 
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/auth")
+//@RequestMapping("/api/auth")
 public class AuthController {
 	@Autowired
 	@Qualifier(BeanIds.AUTHENTICATION_MANAGER)
@@ -49,8 +49,8 @@ public class AuthController {
 	@Autowired
 	UserRepository userRepository;
 
-	@Autowired
-	RoleRepository roleRepository;
+//	@Autowired
+//	RoleRepository roleRepository;
 
 	@Autowired
 	PasswordEncoder encoder;
@@ -58,11 +58,11 @@ public class AuthController {
 	@Autowired
 	JwtUtils jwtUtils;
 
-	@PostMapping("/login")
+	@PostMapping("api/auth/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest  loginRequest) {
 
 		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPassword()));
+				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPasswd()));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtUtils.generateJwtToken(authentication);
@@ -77,7 +77,7 @@ public class AuthController {
 												 roles));
 	}
 
-	@PostMapping("/signup")
+	@PostMapping("api/auth/signup")
 	public ResponseEntity<?> registerUser(@Valid @RequestBody SignupRequest signUpRequest) {
 		if (userRepository.existsByUsername(signUpRequest.getEmail())) {
 			return ResponseEntity
@@ -93,39 +93,39 @@ public class AuthController {
 
 		// Create new user's account
 		Usr user = new Usr(signUpRequest.getEmail(),
-							 encoder.encode(signUpRequest.getPassword()));
+							 encoder.encode(signUpRequest.getPasswd()));
 
 		Set<String> strRoles = signUpRequest.getRole();
 		Set<Role> roles = new HashSet<>();
 
-		if (strRoles == null) {
-			Role userRole = roleRepository.findByRoleName(RoleEnum.ROLE_USER)
-					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-			roles.add(userRole);
-		} else {
-			strRoles.forEach(role -> {
-				switch (role) {
-				case "admin":
-					Role adminRole = roleRepository.findByRoleName(RoleEnum.ROLE_ADMIN)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(adminRole);
+//		if (strRoles == null) {
+//			Role userRole = roleRepository.findByRoleName(RoleEnum.ROLE_USER)
+//					.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//			roles.add(userRole);
+//		} else {
+//			strRoles.forEach(role -> {
+//				switch (role) {
+//				case "admin":
+//					Role adminRole = roleRepository.findByRoleName(RoleEnum.ROLE_ADMIN)
+//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//					roles.add(adminRole);
+//
+//					break;
+//				case "mod":
+//					Role modRole = roleRepository.findByRoleName(RoleEnum.ROLE_MODERATOR)
+//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//					roles.add(modRole);
+//
+//					break;
+//				default:
+//					Role userRole = roleRepository.findByRoleName(RoleEnum.ROLE_USER)
+//							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
+//					roles.add(userRole);
+//				}
+//			});
+//		}
 
-					break;
-				case "mod":
-					Role modRole = roleRepository.findByRoleName(RoleEnum.ROLE_MODERATOR)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(modRole);
-
-					break;
-				default:
-					Role userRole = roleRepository.findByRoleName(RoleEnum.ROLE_USER)
-							.orElseThrow(() -> new RuntimeException("Error: Role is not found."));
-					roles.add(userRole);
-				}
-			});
-		}
-
-		user.setRoles(roles);
+//		user.setRoles(roles);
 		userRepository.save(user);
 
 		return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
