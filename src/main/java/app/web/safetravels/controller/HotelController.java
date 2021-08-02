@@ -30,7 +30,7 @@ public class HotelController {
 		return hservice.saveHotels(hotel);
 	}
 	@CrossOrigin("http://localhost:4200")
-	@GetMapping("/api/o/hotels")
+	@GetMapping("/hotels")
 	public List<Hotel> findAllHotels() {
 		return hservice.getAllHotels();
 	}
