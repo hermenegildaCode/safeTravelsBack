@@ -21,9 +21,9 @@ public class UserService {
 	public Usr getUserByEmail(String email) {
 		return userRepository.findById(email).orElse(null);
 	}
-	public List<Usr> getUsersByCountry(String country) {
-		return userRepository.findByCountry(country);
-	}
+//	public List<Usr> getUsersByCountry(String country) {
+//		return userRepository.findByCountry(country);
+//	}
 	
 	public String deleteUser(String email) {
 		userRepository.deleteById(email);
@@ -31,9 +31,9 @@ public class UserService {
 	}
 	public Usr updateUser (Usr usr){
 		Usr existingUser= userRepository.findById(usr.getEmail()).orElse(null);
-		existingUser.setFirstname(usr.getFirstname());
-		existingUser.setLastname(usr.getLastname());
-		existingUser.setCountry(usr.getCountry());
+		existingUser.setUsername(usr.getUsername());
+//		existingUser.setLastname(usr.getLastname());
+//		existingUser.setCountry(usr.getCountry());
 		existingUser.setPasswd(usr.getPasswd());
 		return userRepository.save(existingUser);
 	}

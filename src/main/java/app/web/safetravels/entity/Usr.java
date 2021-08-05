@@ -31,22 +31,23 @@ public class Usr {
 	@Setter
 	private String username;
 	private String passwd;
-	private String phone;
-	private String firstname;
-	private String lastname;
-	private String country;
-	private Date birthdate;
+//	private String phone;
+//	private String firstname;
+//	private String lastname;
+//	private String country;
+//	private Date birthdate;
 
-//	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(	name = "usr_roles", 
-//				joinColumns = @JoinColumn(name = "usr_email"), 
-//				inverseJoinColumns = @JoinColumn(name = "role_id"))
-//	private Set<Role> roles = new HashSet<Role>();
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(	name = "usr_role", 
+				joinColumns = @JoinColumn(name = "usr_email"), 
+				inverseJoinColumns = @JoinColumn(name = "role_id"))
+	private Set<Role> roles = new HashSet<Role>();
 
 	public Usr(String email, String passwd) {
 		this.email= email;
 		this.passwd = passwd;
 	}
+	
 	
 	public String getEmail() {
 		return email;
@@ -64,44 +65,55 @@ public class Usr {
 		this.passwd = passwd;
 	}
 
-	public String getFirstname() {
-		return firstname;
-	}
-
-	public void setFirstname(String firtname) {
-		this.firstname = firtname;
-	}
-
-	public String getLastname() {
-		return lastname;
-	}
-
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
-
-	public String getCountry() {
-		return country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	public Date getBirthdate() {
-		return birthdate;
-	}
-
-	public void setBirthdate(Date birthdate) {
-		this.birthdate = birthdate;
-	}
-//	public Set<Role> getRoles() {
-//		return roles;
+//	public String getFirstname() {
+//		return firstname;
 //	}
 //
-//	public void setRoles(Set<Role> roles) {
-//		this.roles = roles;
+//	public void setFirstname(String firtname) {
+//		this.firstname = firtname;
 //	}
+//
+//	public String getLastname() {
+//		return lastname;
+//	}
+//
+//	public void setLastname(String lastname) {
+//		this.lastname = lastname;
+//	}
+//
+//	public String getCountry() {
+//		return country;
+//	}
+//
+//	public void setCountry(String country) {
+//		this.country = country;
+//	}
+//
+//	public Date getBirthdate() {
+//		return birthdate;
+//	}
+//
+//	public void setBirthdate(Date birthdate) {
+//		this.birthdate = birthdate;
+//	}
+
+
+
+	public Set<Role> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
+
+
+	public Usr(String email, String username, String passwd) {
+		super();
+		this.email = email;
+		this.username = username;
+		this.passwd = passwd;
+	}
 
 
 }

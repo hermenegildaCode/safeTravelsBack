@@ -8,14 +8,16 @@ public class LoginRequest {
 
 	@NotBlank
 	private String passwd;
+//	@NotBlank
+//	private String username;
 
 	public String getEmail() {
 		return email;
 	}
 
-	public void setUsername(String email) {
-		this.email = email;
-	}
+//	public void setUsername(String username) {
+//		this.username = username;
+//	}
 
 	public String getPasswd() {
 		return passwd;
@@ -24,4 +26,8 @@ public class LoginRequest {
 	public void setPasswd(String password) {
 		this.passwd = password;
 	}
+
+//	public Object getUsername() {
+//		return this.username;
+//	}
 }

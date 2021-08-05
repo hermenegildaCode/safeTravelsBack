@@ -36,10 +36,10 @@ public class UserController {
 		return userService.getUserByEmail(email);
 	}
 
-	@GetMapping("/usersByCountry/{country}")
-	public List<Usr> findUsersByCountry(@PathVariable String country) {
-		return userService.getUsersByCountry(country);
-	}
+//	@GetMapping("/usersByCountry/{country}")
+//	public List<Usr> findUsersByCountry(@PathVariable String country) {
+//		return userService.getUsersByCountry(country);
+//	}
 
 	@PutMapping("/updateUser")
 	public Usr updateUsr(@RequestBody Usr usr) {

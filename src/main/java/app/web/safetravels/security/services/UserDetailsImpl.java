@@ -1,6 +1,5 @@
 package app.web.safetravels.security.services;
 
-import java.sql.Date;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
@@ -9,7 +8,6 @@ import java.util.stream.Collectors;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -19,52 +17,55 @@ import lombok.Setter;
 
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
-	@Getter
-	@Setter
-	private String firstname;
-	@Setter
-	@Getter
-	private String lastname;
-	@Setter
-	@Getter
-	private String country;
-	@Setter
-	@Getter
-	private Date birthdate;
+//	@Getter
+//	@Setter
+//	private String firstname;
+//	@Setter
+//	@Getter
+//	private String lastname;
+//	@Setter
+//	@Getter
+//	private String country;
+//	@Setter
+//	@Getter
+//	private Date birthdate;
 	@Getter
 	private String email;
 	@Getter
 	@JsonIgnore
 	private String passwd;
-
+	@Getter
+	@Setter
+	private String username;
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserDetailsImpl(String email, String passwd, String firstname, String lastname, String phone,
-			String country, Date birthdate, Collection<? extends GrantedAuthority> authorities) {
+//	public UserDetailsImpl(String email, String passwd, String firstname, String lastname, String phone,
+//			String country, Date birthdate, Collection<? extends GrantedAuthority> authorities) {
+	public UserDetailsImpl(String email, String passwd, String username, Collection<? extends GrantedAuthority> authorities) {
 		this.email = email;
 		this.passwd = passwd;
-		this.firstname = firstname;
-		this.lastname = lastname;
-		this.country = country;
-		this.birthdate = birthdate;
+		this.username = username;
+//		this.lastname = lastname;
+//		this.country = country;
+//		this.birthdate = birthdate;
 		this.authorities = authorities;
 	}
 
-//	public static UserDetailsImpl build(Usr user) {
-//		List<GrantedAuthority> authorities = user.getRoles().stream()
-//				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
-//				.collect(Collectors.toList());
+	public static UserDetailsImpl build(Usr user) {
+		List<GrantedAuthority> authorities = user.getRoles().stream()
+				.map(role -> new SimpleGrantedAuthority(role.getName().name()))
+				.collect(Collectors.toList());
 
-//		return new UserDetailsImpl(
-//				user.getEmail(),
-//				user.getPasswd(),
-//				user.getFirstname(),
+		return new UserDetailsImpl(
+				user.getEmail(),
+				user.getPasswd(),
+				user.getUsername(),
 //				user.getLastname(),
 //				user.getPhone(),
 //				user.getCountry(),
 //				user.getBirthdate(),
-//				authorities);
-//	}
+				authorities);
+	}
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -109,11 +110,11 @@ public class UserDetailsImpl implements UserDetails {
 
 	@Override
 	public String getUsername() {
+		return username;
+	}
+	
+	public String getEmail() {
 		return email;
 	}
-
-	public static UserDetails build(Usr user) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	
 }
