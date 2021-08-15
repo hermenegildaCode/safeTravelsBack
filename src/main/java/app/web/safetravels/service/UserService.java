@@ -37,4 +37,7 @@ public class UserService {
 		existingUser.setPasswd(usr.getPasswd());
 		return userRepository.save(existingUser);
 	}
+	public Usr getUserByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}
 }

@@ -11,7 +11,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
+
+import org.hibernate.validator.constraints.UniqueElements;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,7 +26,10 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="usr")
+@Table(	name = "usr", 
+uniqueConstraints = { 
+	@UniqueConstraint(columnNames = "username"),
+})
 public class Usr {
 	@Id
 	private String email;
@@ -43,11 +49,17 @@ public class Usr {
 				inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<Role>();
 
-	public Usr(String email, String passwd) {
-		this.email= email;
+	public Usr(String email, String username, String passwd) {
+		this.email = email;
+		this.username = username;
 		this.passwd = passwd;
 	}
-	
+
+	public Usr(String username, String passwd) {
+		this.username = username;
+		this.passwd = passwd;
+	}
+
 	
 	public String getEmail() {
 		return email;
@@ -106,14 +118,5 @@ public class Usr {
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
-
-	public Usr(String email, String username, String passwd) {
-		super();
-		this.email = email;
-		this.username = username;
-		this.passwd = passwd;
-	}
-
 
 }

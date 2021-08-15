@@ -62,7 +62,7 @@ public class AuthController {
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
 		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(loginRequest.getEmail(), loginRequest.getPasswd()));
+				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPasswd()));
 
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 		String jwt = jwtUtils.generateJwtToken(authentication);
@@ -73,7 +73,7 @@ public class AuthController {
 				.collect(Collectors.toList());
 
 		return ResponseEntity.ok(new JwtResponse(jwt, 
-												 userDetails.getEmail(), 
+												 userDetails.getUsername(), 
 												 roles));
 	}
 

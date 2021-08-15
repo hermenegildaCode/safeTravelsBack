@@ -10,6 +10,10 @@ public interface HotelRepository extends JpaRepository<Hotel, Integer> {
 	List<Hotel> findByProvince(String province);
 
 	Hotel findByName(String name);
+
+	List<Hotel> findByNameContaining(String name);
+
+	List<Hotel> findByCity(String city);
 	
 }
 

@@ -35,6 +35,11 @@ public class UserController {
 	public Usr findUserByEmail(@PathVariable String email) {
 		return userService.getUserByEmail(email);
 	}
+	
+	@GetMapping("/user/{username}")
+	public Usr findUserByUsername(@PathVariable String username) {
+		return userService.getUserByUsername(username);
+	}
 
 //	@GetMapping("/usersByCountry/{country}")
 //	public List<Usr> findUsersByCountry(@PathVariable String country) {

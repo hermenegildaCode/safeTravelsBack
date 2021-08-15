@@ -74,5 +74,13 @@ public class HotelService {
 		
 	}
 
+	public List<Hotel> getHotelsByName(String name) {
+		return hotelRespository.findByNameContaining(name);
+	}
+
+	public List<Hotel> getHotelsByCity(String city) {
+		return hotelRespository.findByCity(city);
+	}
+
 
 }

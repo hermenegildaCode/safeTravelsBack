@@ -10,6 +10,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 @Data
 @NoArgsConstructor
@@ -61,4 +62,8 @@ public class Room {
 	@Getter
 	@Setter
 	private boolean jacuzzi;
+	@Getter
+	@Setter
+	private int numberOfRoomsLikeThis;
+	
 }
