@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.Getter;
@@ -32,7 +34,9 @@ public class Booking {
 	@Getter
 	@Setter
 	private int roomId;
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date checkinDate;
+	@DateTimeFormat(pattern="yyyy-mm-dd")
 	private Date checkoutDate;
 	private boolean cancelled;
 	private boolean breakfastIncluded;

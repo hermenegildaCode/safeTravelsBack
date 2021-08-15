@@ -1,5 +1,7 @@
 package app.web.safetravels.service;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class BookingService {
 	private RoomService roomService;
 	
 	public static List<Date> getDatesInRange(
-			  Date startDate, Date endDate) {
+			  Date startDate, Date endDate) throws ParseException {
 			    List<Date> datesInRange = new ArrayList<Date>();
 			    Calendar calendar = new GregorianCalendar();
 			    calendar.setTime(startDate);
@@ -37,8 +39,11 @@ public class BookingService {
 			    endCalendar.setTime(endDate);
 
 			    while (calendar.before(endCalendar)) {
+//			    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			        Date result = calendar.getTime();
-			        datesInRange.add(result);
+			        String formattedDateStr = new SimpleDateFormat("yyyy-MM-dd").format(result);
+			        Date formattedDate = new SimpleDateFormat("yyyy-MM-dd").parse(formattedDateStr);
+			        datesInRange.add(formattedDate);
 			        calendar.add(Calendar.DATE, 1);
 			    }
 			    return datesInRange;
@@ -60,21 +65,23 @@ public class BookingService {
 		List<Booking> totalBookingsThisRoomType = bookingRespository.findAllByRoomId(booking.getRoomId());
 		return totalBookingsThisRoomType.size();
 	}
-	public boolean areRoomsThisTypeAvailable(Booking booking) {
+	public boolean areRoomsThisTypeAvailable(Booking booking) throws ParseException {
 		List<Date> bookingDatesRange = getDatesInRange(booking.getCheckinDate(), booking.getCheckoutDate());
-		int totalNumberOfRooms= booking.getRoomId();
+		int totalNumberOfRooms= totalRoomsOfThisType(booking);
 		int roomsLeft = totalNumberOfRooms;
 		boolean areAnyRoomsLeft = true;
 		List<Booking> totalBookingsThisRoomType = bookingRespository.findAllByRoomId(booking.getRoomId());
+		isBookedDateRange:
 		for (Date date: bookingDatesRange) {
 			for (Booking bookingRoomType : totalBookingsThisRoomType) {
 				List<Date> dateRangeForThisRoom = getDatesInRange(bookingRoomType.getCheckinDate(), bookingRoomType.getCheckoutDate());
 				for (Date bookingRoomTypeDate : dateRangeForThisRoom) {
-					if(bookingRoomTypeDate == date) {
+					//if comparison = true it means the dates are equal. if it less than 0 date 1 comes after date2. 
+					if(bookingRoomTypeDate.compareTo(date) == 0) {
 						roomsLeft--;
 						if(roomsLeft == 0) {
 							areAnyRoomsLeft = false;
-							break;
+							break isBookedDateRange;
 						}
 					}
 				}
@@ -83,7 +90,7 @@ public class BookingService {
 		}	
 		return areAnyRoomsLeft;
 	}
-	public void saveBooking (Booking booking) throws RoomsNotLeftException {
+	public void saveBooking (Booking booking) throws RoomsNotLeftException, ParseException {
 		if(areRoomsThisTypeAvailable(booking) == false) {
 			throw new RoomsNotLeftException("There are not any rooms left of this type.");
 		} else {

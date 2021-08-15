@@ -1,5 +1,6 @@
 package app.web.safetravels.controller;
 
+import java.text.ParseException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class BookingController {
 	@Autowired
 	private BookingService bservice;
 	@PostMapping("/addBooking")
-	public void addBooking(@RequestBody Booking booking) throws RoomsNotLeftException {
+	public void addBooking(@RequestBody Booking booking) throws RoomsNotLeftException, ParseException {
 		bservice.saveBooking(booking);
 	}
 	@PostMapping("/addBookings")
