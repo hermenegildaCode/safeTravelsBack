@@ -72,9 +72,12 @@ public class AuthController {
 				.map(item -> item.getAuthority())
 				.collect(Collectors.toList());
 
-		return ResponseEntity.ok(new JwtResponse(jwt, 
-												 userDetails.getUsername(), 
-												 roles));
+		return ResponseEntity.ok(new JwtResponse(jwt,
+												 roles, 
+												 userDetails.getUsername(), userDetails.getEmail()));
+//		return ResponseEntity.ok(new JwtResponse(jwt,
+//				 roles, 
+//				 userDetails.getUsername()));
 	}
 
 	@PostMapping("api/auth/signup")

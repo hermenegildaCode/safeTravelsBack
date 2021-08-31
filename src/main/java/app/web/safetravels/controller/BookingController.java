@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.web.safetravels.entity.Booking;
+import app.web.safetravels.entity.Hotel;
 import app.web.safetravels.exceptions.RoomsNotLeftException;
 import app.web.safetravels.service.BookingService;
 
@@ -21,6 +22,7 @@ import app.web.safetravels.service.BookingService;
 public class BookingController {
 	@Autowired
 	private BookingService bservice;
+	@CrossOrigin("http://localhost:4200")
 	@PostMapping("/addBooking")
 	public void addBooking(@RequestBody Booking booking) throws RoomsNotLeftException, ParseException {
 		bservice.saveBooking(booking);
@@ -29,6 +31,7 @@ public class BookingController {
 	public List<Booking> addBookings(@RequestBody List<Booking> bookings) {
 		return bservice.saveBookings(bookings);
 	}
+	@CrossOrigin("http://localhost:4200")
 	@GetMapping("/bookings")
 	public List<Booking> findAllBookings() {
 		return bservice.getAllBookings();
@@ -48,10 +51,15 @@ public class BookingController {
 	public List<Booking> findBookingsByUsername(@PathVariable String username) {
 		return bservice.getBookingsByUsername(username);
 	}
-
+	
+	@CrossOrigin("http://localhost:4200")
+	@GetMapping("hotelByHotelId/{hotelId}")
+	public Hotel findHotelByBooking(@PathVariable int hotelId) {
+	return bservice.getHotelByHotelId(hotelId);
+	}
 
 	@PutMapping("/updateBooking")
-	public Booking updateHotel(@RequestBody Booking booking) {
+	public Booking updateBooking(@RequestBody Booking booking) {
 		return bservice.updateBooking(booking);
 	}
 	@DeleteMapping("deleteBooking/{bookingId}")

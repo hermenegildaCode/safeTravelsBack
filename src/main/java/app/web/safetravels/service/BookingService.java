@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.web.safetravels.entity.Booking;
+import app.web.safetravels.entity.Hotel;
 import app.web.safetravels.entity.Room;
 import app.web.safetravels.exceptions.RoomsNotLeftException;
 import app.web.safetravels.repository.BookingRepository;
@@ -28,7 +29,11 @@ public class BookingService {
 	private BookingRepository bookingRespository;
 	@Autowired
 	private RoomService roomService;
-	
+	@Autowired
+	private HotelService hotelService;
+	public Hotel getHotelByHotelId(int hotelId) {
+		return hotelService.getHotelById(hotelId);
+	}
 	public static List<Date> getDatesInRange(
 			  Date startDate, Date endDate) throws ParseException {
 			    List<Date> datesInRange = new ArrayList<Date>();
@@ -41,8 +46,8 @@ public class BookingService {
 			    while (calendar.before(endCalendar)) {
 //			    	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 			        Date result = calendar.getTime();
-			        String formattedDateStr = new SimpleDateFormat("yyyy-MM-dd").format(result);
-			        Date formattedDate = new SimpleDateFormat("yyyy-MM-dd").parse(formattedDateStr);
+			        String formattedDateStr = new SimpleDateFormat("dd/MM/yyyy").format(result);
+			        Date formattedDate = new SimpleDateFormat("dd/MM/yyyy").parse(formattedDateStr);
 			        datesInRange.add(formattedDate);
 			        calendar.add(Calendar.DATE, 1);
 			    }
