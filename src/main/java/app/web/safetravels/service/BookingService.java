@@ -96,11 +96,11 @@ public class BookingService {
 		return areAnyRoomsLeft;
 	}
 	public void saveBooking (Booking booking) throws RoomsNotLeftException, ParseException {
-		if(areRoomsThisTypeAvailable(booking) == false) {
-			throw new RoomsNotLeftException("There are not any rooms left of this type.");
-		} else {
+//		if(areRoomsThisTypeAvailable(booking) == false) {
+//			throw new RoomsNotLeftException("There are not any rooms left of this type.");
+//		} else {
 			bookingRespository.save(booking);
-		}
+//		}
 	}
 	public List<Booking> saveBookings(List<Booking> hotels){
 		return bookingRespository.saveAll(hotels);
