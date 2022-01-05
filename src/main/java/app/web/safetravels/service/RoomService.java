@@ -1,13 +1,11 @@
 package app.web.safetravels.service;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import app.web.safetravels.entity.Room;
-import app.web.safetravels.repository.HotelRepository;
 import app.web.safetravels.repository.RoomRepository;
 
 @Service
