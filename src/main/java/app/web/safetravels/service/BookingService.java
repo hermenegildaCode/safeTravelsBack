@@ -2,16 +2,11 @@ package app.web.safetravels.service;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,7 +16,6 @@ import app.web.safetravels.entity.Hotel;
 import app.web.safetravels.entity.Room;
 import app.web.safetravels.exceptions.RoomsNotLeftException;
 import app.web.safetravels.repository.BookingRepository;
-import app.web.safetravels.repository.RoomRepository;
 
 @Service
 public class BookingService {

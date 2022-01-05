@@ -30,17 +30,24 @@ public class Booking {
 	@Setter
 	@Column(name="b_username", unique=true)
 	private String username;
+	@Column(name="hotelId")
 	private int hotelId;
 	@Getter
 	@Setter
+	@Column(name="roomId")
 	private int roomId;
 //	@DateTimeFormat(pattern="yyyy-mm-dd")
 	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Column(name="checkinDate")
 	private Date checkinDate;
 	@DateTimeFormat(pattern="dd/MM/yyyy")
+	@Column(name="checkoutDate")
 	private Date checkoutDate;
 	private boolean cancelled;
 	private boolean breakfastIncluded;
+	@Getter
+	@Setter
+	private boolean freecancellation;
 	@Getter
 	@Setter
 	private double price;

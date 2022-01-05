@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import app.web.safetravels.entity.Hotel;
-import app.web.safetravels.repository.HotelRepository;
 import app.web.safetravels.service.HotelService;
 
 @RestController

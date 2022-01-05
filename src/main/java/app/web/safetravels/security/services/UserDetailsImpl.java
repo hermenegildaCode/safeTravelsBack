@@ -17,18 +17,6 @@ import lombok.Setter;
 
 public class UserDetailsImpl implements UserDetails {
 	private static final long serialVersionUID = 1L;
-//	@Getter
-//	@Setter
-//	private String firstname;
-//	@Setter
-//	@Getter
-//	private String lastname;
-//	@Setter
-//	@Getter
-//	private String country;
-//	@Setter
-//	@Getter
-//	private Date birthdate;
 	@Getter
 	private String email;
 	@Getter
@@ -108,13 +96,5 @@ public class UserDetailsImpl implements UserDetails {
 		return passwd;
 	}
 
-	@Override
-	public String getUsername() {
-		return username;
-	}
-	
-	public String getEmail() {
-		return email;
-	}
 	
 }
