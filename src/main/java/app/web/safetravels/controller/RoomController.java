@@ -25,17 +25,17 @@ public class RoomController {
 	public Room addRoom(@RequestBody Room room) {
 		return roomService.saveRoom(room);
 	}
-	@CrossOrigin("http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/rooms")
 	public List<Room> findAllRooms() {
 		return roomService.getAllRooms();
 	}
-	@CrossOrigin("http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/room/{id}")
 	public Room findRoomById(@PathVariable int id) {
 		return roomService.getRoomById(id);
 	}
-	@CrossOrigin("http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/hotel/{id}/rooms")
 	public List<Room> findRoomsByHotel(@PathVariable int id) {
 		return roomService.getRoomsByHotel(id);

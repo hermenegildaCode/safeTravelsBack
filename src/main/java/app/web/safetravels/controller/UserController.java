@@ -25,7 +25,7 @@ public class UserController {
 	public Usr addUser(@RequestBody Usr usr) {
 		return userService.saveUser(usr);
 	}
-	@CrossOrigin("http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"}, maxAge = 3600)
 	@GetMapping("/users")
 	public List<Usr> findAllUsers() {
 		return userService.getAllUsers();

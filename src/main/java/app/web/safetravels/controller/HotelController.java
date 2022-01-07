@@ -33,12 +33,12 @@ public class HotelController {
 	public List<Hotel> addHotels(@RequestBody List<Hotel> hotel) {
 		return hservice.saveHotels(hotel);
 	}
-//	@CrossOrigin("http://localhost:4200")
+//	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 //	@GetMapping("/hotels")
 //	public List<Hotel> findAllHotels() {
 //		return hservice.getAllHotels();
 //	}
-	@CrossOrigin("http://localhost:4200")	
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})	
 	@GetMapping("/hotels")
 	  public ResponseEntity<List<Hotel>> getAllHotels(@RequestParam(required = false) String name) {
 	    try {
@@ -59,22 +59,22 @@ public class HotelController {
 	    }
 	  }
 
-	@CrossOrigin("http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotelByName/{name}")
 	public Hotel findHotelByName(@PathVariable String name) {
 		return hservice.getHotelByName(name);
 	}
-	@CrossOrigin("http://localhost:4200")
+	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotel/{id}")
 	public Hotel findHotelById(@PathVariable int id) {
 		return hservice.getHotelById(id);
 	}	
-//	@CrossOrigin("http://localhost:4200")
+//	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotelsByProvince/{province}")
 	public List<Hotel> findHotelsByProvince(@PathVariable String province) {
 		return hservice.getHotelsByProvince(province);
 	}
-//	@CrossOrigin("http://localhost:4200")
+//	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotelsByCity/{city}")
 	public List<Hotel> findHotelsByCity(@PathVariable String city) {
 		return hservice.getHotelsByCity(city);
