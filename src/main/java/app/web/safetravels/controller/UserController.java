@@ -25,17 +25,17 @@ public class UserController {
 	public Usr addUser(@RequestBody Usr usr) {
 		return userService.saveUser(usr);
 	}
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"}, maxAge = 3600)
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/users")
 	public List<Usr> findAllUsers() {
 		return userService.getAllUsers();
 	}
-
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/userByEmail/{email}")
 	public Usr findUserByEmail(@PathVariable String email) {
 		return userService.getUserByEmail(email);
 	}
-	
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/user/{username}")
 	public Usr findUserByUsername(@PathVariable String username) {
 		return userService.getUserByUsername(username);

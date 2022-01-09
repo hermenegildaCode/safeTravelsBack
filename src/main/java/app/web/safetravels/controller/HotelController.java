@@ -1,4 +1,4 @@
-package app.web.safetravels.controller;
+   package app.web.safetravels.controller;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -38,7 +38,7 @@ public class HotelController {
 //	public List<Hotel> findAllHotels() {
 //		return hservice.getAllHotels();
 //	}
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})	
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("/hotels")
 	  public ResponseEntity<List<Hotel>> getAllHotels(@RequestParam(required = false) String name) {
 	    try {
@@ -59,26 +59,28 @@ public class HotelController {
 	    }
 	  }
 
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotelByName/{name}")
 	public Hotel findHotelByName(@PathVariable String name) {
 		return hservice.getHotelByName(name);
 	}
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotel/{id}")
 	public Hotel findHotelById(@PathVariable int id) {
 		return hservice.getHotelById(id);
 	}	
-//	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotelsByProvince/{province}")
 	public List<Hotel> findHotelsByProvince(@PathVariable String province) {
 		return hservice.getHotelsByProvince(province);
 	}
-//	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("hotelsByCity/{city}")
 	public List<Hotel> findHotelsByCity(@PathVariable String city) {
 		return hservice.getHotelsByCity(city);
 	}
+
 	@PutMapping("/updateHotel/{id}")
 //	public Boolean updateHotel(@RequestBody Hotel hotel, int id) {
 //		return hservice.updateHotel(id, hotel);

@@ -22,8 +22,7 @@ import app.web.safetravels.service.BookingService;
 public class BookingController {
 	@Autowired
 	private BookingService bservice;
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
-	@PostMapping("/addBooking")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})@PostMapping("/addBooking")
 	public void addBooking(@RequestBody Booking booking) throws RoomsNotLeftException, ParseException {
 		bservice.saveBooking(booking);
 	}
@@ -31,16 +30,16 @@ public class BookingController {
 	public List<Booking> addBookings(@RequestBody List<Booking> bookings) {
 		return bservice.saveBookings(bookings);
 	}
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
-	@GetMapping("/bookings")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})@GetMapping("/bookings")
 	public List<Booking> findAllBookings() {
 		return bservice.getAllBookings();
 	}
-
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("bookingsByHotel/{hotel}")
 	public List<Booking> findBookingsByHotelId(@PathVariable int hotel) {
 		return bservice.getBookingsByHotel(hotel);
 	}
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("bookingById/{id}")
 	public Booking findBookingById(@PathVariable int id) {
 		return bservice.getBookingById(id);
@@ -52,8 +51,7 @@ public class BookingController {
 		return bservice.getBookingsByUsername(username);
 	}
 	
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
-	@GetMapping("hotelByHotelId/{hotelId}")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})@GetMapping("hotelByHotelId/{hotelId}")
 	public Hotel findHotelByBooking(@PathVariable int hotelId) {
 	return bservice.getHotelByHotelId(hotelId);
 	}
