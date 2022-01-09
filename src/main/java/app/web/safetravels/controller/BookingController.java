@@ -47,7 +47,7 @@ public class BookingController {
 		return bservice.getBookingById(id);
 	}
 
-	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com/web", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("bookings/{username}")
 	public List<Booking> findBookingsByUsername(@PathVariable String username) {
 		return bservice.getBookingsByUsername(username);
