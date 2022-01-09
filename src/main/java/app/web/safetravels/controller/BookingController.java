@@ -22,7 +22,8 @@ import app.web.safetravels.service.BookingService;
 public class BookingController {
 	@Autowired
 	private BookingService bservice;
-	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})@PostMapping("/addBooking")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@PostMapping("/addBooking")
 	public void addBooking(@RequestBody Booking booking) throws RoomsNotLeftException, ParseException {
 		bservice.saveBooking(booking);
 	}
@@ -30,7 +31,8 @@ public class BookingController {
 	public List<Booking> addBookings(@RequestBody List<Booking> bookings) {
 		return bservice.saveBookings(bookings);
 	}
-	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})@GetMapping("/bookings")
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@GetMapping("/bookings")
 	public List<Booking> findAllBookings() {
 		return bservice.getAllBookings();
 	}
@@ -45,7 +47,7 @@ public class BookingController {
 		return bservice.getBookingById(id);
 	}
 
-	@CrossOrigin(origins = {"http://localhost:4200", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@GetMapping("bookings/{username}")
 	public List<Booking> findBookingsByUsername(@PathVariable String username) {
 		return bservice.getBookingsByUsername(username);
