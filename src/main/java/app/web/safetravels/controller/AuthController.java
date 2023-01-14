@@ -57,7 +57,7 @@ public class AuthController {
 
 	@Autowired
 	JwtUtils jwtUtils;
-	@CrossOrigin(origins = {"http://localhost:4200", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
+	@CrossOrigin(origins = {"http://localhost:4200", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravelss.herokuapp.com", "https://safetravelss.herokuapp.com", "https://safetravelz.herokuapp.com", "https://safetravelz.herokuapp.com/web"})
 	@PostMapping("api/auth/login")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 

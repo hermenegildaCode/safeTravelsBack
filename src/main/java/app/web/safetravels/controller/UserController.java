@@ -25,17 +25,17 @@ public class UserController {
 	public Usr addUser(@RequestBody Usr usr) {
 		return userService.saveUser(usr);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/users")
 	public List<Usr> findAllUsers() {
 		return userService.getAllUsers();
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/userByEmail/{email}")
 	public Usr findUserByEmail(@PathVariable String email) {
 		return userService.getUserByEmail(email);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/user/{username}")
 	public Usr findUserByUsername(@PathVariable String username) {
 		return userService.getUserByUsername(username);

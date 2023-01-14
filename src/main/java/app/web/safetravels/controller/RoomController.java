@@ -25,17 +25,17 @@ public class RoomController {
 	public Room addRoom(@RequestBody Room room) {
 		return roomService.saveRoom(room);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/rooms")
 	public List<Room> findAllRooms() {
 		return roomService.getAllRooms();
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/room/{id}")
 	public Room findRoomById(@PathVariable int id) {
 		return roomService.getRoomById(id);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/hotel/{id}/rooms")
 	public List<Room> findRoomsByHotel(@PathVariable int id) {
 		return roomService.getRoomsByHotel(id);

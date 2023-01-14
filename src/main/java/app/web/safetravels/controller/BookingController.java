@@ -22,7 +22,7 @@ import app.web.safetravels.service.BookingService;
 public class BookingController {
 	@Autowired
 	private BookingService bservice;
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@PostMapping("/addBooking")
 	public void addBooking(@RequestBody Booking booking) throws RoomsNotLeftException, ParseException {
 		bservice.saveBooking(booking);
@@ -31,29 +31,29 @@ public class BookingController {
 	public List<Booking> addBookings(@RequestBody List<Booking> bookings) {
 		return bservice.saveBookings(bookings);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/bookings")
 	public List<Booking> findAllBookings() {
 		return bservice.getAllBookings();
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("bookingsByHotel/{hotel}")
 	public List<Booking> findBookingsByHotelId(@PathVariable int hotel) {
 		return bservice.getBookingsByHotel(hotel);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("bookingById/{id}")
 	public Booking findBookingById(@PathVariable int id) {
 		return bservice.getBookingById(id);
 	}
 
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("bookings/{username}")
 	public List<Booking> findBookingsByUsername(@PathVariable String username) {
 		return bservice.getBookingsByUsername(username);
 	}
 	
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})@GetMapping("hotelByHotelId/{hotelId}")
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})@GetMapping("hotelByHotelId/{hotelId}")
 	public Hotel findHotelByBooking(@PathVariable int hotelId) {
 	return bservice.getHotelByHotelId(hotelId);
 	}

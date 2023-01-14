@@ -38,7 +38,7 @@ public class HotelController {
 //	public List<Hotel> findAllHotels() {
 //		return hservice.getAllHotels();
 //	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("/hotels")
 	  public ResponseEntity<List<Hotel>> getAllHotels(@RequestParam(required = false) String name) {
 	    try {
@@ -59,23 +59,23 @@ public class HotelController {
 	    }
 	  }
 
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("hotelByName/{name}")
 	public Hotel findHotelByName(@PathVariable String name) {
 		return hservice.getHotelByName(name);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("hotel/{id}")
 	public Hotel findHotelById(@PathVariable int id) {
 		return hservice.getHotelById(id);
 	}	
 
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("hotelsByProvince/{province}")
 	public List<Hotel> findHotelsByProvince(@PathVariable String province) {
 		return hservice.getHotelsByProvince(province);
 	}
-	@CrossOrigin(origins = {"http://localhost", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
+	@CrossOrigin(origins = {"http://localhost", "https://site--front--p6vkzqn94x74.code.run/", "http://safetravels.fly.dev/", "https://safetravels.fly.dev/", "https://safetravelz.fly.dev/", "https://safetravelz.fly.dev/web"})
 	@GetMapping("hotelsByCity/{city}")
 	public List<Hotel> findHotelsByCity(@PathVariable String city) {
 		return hservice.getHotelsByCity(city);
